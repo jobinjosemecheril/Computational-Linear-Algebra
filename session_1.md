@@ -7,8 +7,12 @@ END FUNCTION
 ```
 **Maths**
 
-$$A=\begin{pmatrix}
+Solve the equation $x^2 +3x+5=\sin x$
+
+Solve $\dfrac{\partial^2z}{\partial x^2}$
+
+$`A=\begin{bmatrix}
 1 &2 &3\\
 3 &4 &5\\
 5 &6 &7
-\end{pmatrix}$$
+\end{bmatrix}`$
