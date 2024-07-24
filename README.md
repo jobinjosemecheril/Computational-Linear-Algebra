@@ -1,1 +1,1 @@
-COmputational linear algebra contents included in this repsitory
+Computational linear algebra contents included in this repository.
