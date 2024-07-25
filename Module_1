@@ -9,3 +9,4 @@ In this module, we’ll use Python-flavored pseudocode to describe various matri
 To add two matrices $A$ and $B$, both matrices must have the same dimensions. The sum $C$ of two matrices $A$ and $B$ is calculated element-wise:
 $$C[i][j]=A[i][j]+B[i][j]$$
 
+
