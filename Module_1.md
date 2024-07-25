@@ -470,11 +470,11 @@ y=0\\
 x=3
 \end{cases}$$
 
-Therefore, the solution vector is $\mathbf{x}=\begin{bmatrix}
+Therefore, the solution vector is $`\mathbf{x}=\begin{bmatrix}
 3\\
 0\\
 1
-\end{bmatrix}$
+\end{bmatrix}`$
 
 **Pseudocode:**
 
