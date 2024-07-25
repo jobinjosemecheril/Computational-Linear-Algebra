@@ -1,0 +1,11 @@
+# Python for Linear Algebra
+## Pseudocode: the new language for algorithm design
+
+Pseudocode is a way to describe algorithms in a structured but plain language. It helps in planning the logic without worrying about the syntax of a specific programming language. 
+In this module, we’ll use Python-flavored pseudocode to describe various matrix operations.
+
+## Matrix Sum
+#### Mathematical Procedure:
+To add two matrices $A$ and $B$, both matrices must have the same dimensions. The sum $C$ of two matrices $A$ and $B$ is calculated element-wise:
+$$C[i][j]=A[i][j]+B[i][j]$$
+
