@@ -693,3 +693,21 @@ Use comments to explain user code. Comments begin with the `#` symbol and extend
 # This is a comment
 a = 10  # This is an inline comment
 ```
+
+###### Variable Naming
+Use meaningful variable names to make user code more understandable. Variable names should be in lowercase with words separated by underscores.
+```python
+student_name = "John"
+total_score = 95
+```
+###### Consistent Style
+Follow the `PEP 8` style guide for Python code to maintain consistency and readability. Use blank lines to separate different sections of user code. See the following example of function definition:
+
+```python
+
+def calculate_sum(x, y):
+    return x + y
+
+result = calculate_sum(5, 3)
+print(result)
+```
