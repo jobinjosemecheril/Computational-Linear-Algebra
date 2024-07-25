@@ -429,3 +429,129 @@ END FUNCTION
 4. If the diagonal element is zero, try to swap with a lower row that has a non-zero element in the same column.
 5. If no such row is found, decrement the rank.
 6. Return the resulting rank of the matrix.
+
+### Solving a System of Equations
+**Mathematical Procedure:**
+
+To solve a system of linear equations represented as $AX=b$, where $A$ is the coefficient matrix, $x$ is the vector of variables, and $b$
+ is the constant vector, we can use Gaussian elimination to transform the augmented matrix $[A|b]$ into its row echelon form (REF) and then perform back substitution to find the solution vector $x$.
+
+**Example:**
+
+Consider the system of equations:
+
+$$\begin{cases}
+x + 2y + 3z &= 9 \\
+4x + 5y + 6z& = 24 \\
+7x + 8y + 9z& = 39
+\end{cases}$$
+
+The augmented matrix is:
+
+$$[A|b]=\begin{bmatrix}
+1 &2 &3 &| &9\\
+4 &5 &6 &| &24\\
+7 &8 &9 &| &39
+\end{bmatrix}$$
+
+After performing Gaussian elimination on the augmented matrix, we get:
+
+$$REF(A)=\begin{bmatrix}
+1 &2 &3 &| &9\\
+0 &-3 &-6 &| &-12\\
+0 &0 &0 &| &0
+\end{bmatrix}$$
+
+Performing back substitution, we solve for $z,y,$ and $x$:
+
+$${\begin{cases}
+z=1\\
+y=0\\
+x=3
+\end{cases}$$
+
+Therefore, the solution vector is $\mathbf{x}=\begin{bmatrix}
+3\\
+0\\
+1
+\end{bmatrix}$
+
+**Pseudocode:**
+
+```python
+FUNCTION solve_system_of_equations(A, b):
+    # Step 1: Get the dimensions of the matrix
+    rows = number_of_rows(A)
+    cols = number_of_columns(A)
+    
+    # Step 2: Create the augmented matrix
+    augmented_matrix = create_augmented_matrix(A, b)
+    
+    # Step 3: Transform the augmented matrix to row echelon form
+    row_echelon_form(augmented_matrix, rows, cols)
+    
+    # Step 4: Perform back substitution
+    solution = back_substitution(augmented_matrix, rows, cols)
+    
+    RETURN solution
+END FUNCTION
+
+FUNCTION create_augmented_matrix(A, b):
+    # Combine A and b into an augmented matrix
+    augmented_matrix = []
+    FOR i FROM 0 TO number_of_rows(A)-1:
+        augmented_matrix.append(A[i] + [b[i]])
+    RETURN augmented_matrix
+END FUNCTION
+
+FUNCTION row_echelon_form(augmented_matrix, rows, cols):
+    # Perform Gaussian elimination
+    lead = 0
+    FOR r FROM 0 TO rows-1:
+        IF lead >= cols:
+            RETURN
+        i = r
+        WHILE augmented_matrix[i][lead] == 0:
+            i = i + 1
+            IF i == rows:
+                i = r
+                lead = lead + 1
+                IF lead == cols:
+                    RETURN
+        # Swap rows i and r
+        swap_rows(augmented_matrix, i, r)
+        # Make augmented_matrix[r][lead] = 1
+        lv = augmented_matrix[r][lead]
+        augmented_matrix[r] = [m / float(lv) for m in augmented_matrix[r]]
+        # Make all rows below r have 0 in column lead
+        FOR i FROM r + 1 TO rows-1:
+            lv = augmented_matrix[i][lead]
+            augmented_matrix[i] = [iv - lv * rv for rv, iv in zip(augmented_matrix[r], augmented_matrix[i])]
+        lead = lead + 1
+END FUNCTION
+
+FUNCTION back_substitution(augmented_matrix, rows, cols):
+    # Initialize the solution vector
+    solution = [0 for _ in range(rows)]
+    # Perform back substitution
+    FOR i FROM rows-1 DOWNTO 0:
+        solution[i] = augmented_matrix[i][cols-1]
+        FOR j FROM i+1 TO cols-2:
+            solution[i] = solution[i] - augmented_matrix[i][j] * solution[j]
+    RETURN solution
+END FUNCTION
+
+FUNCTION swap_rows(matrix, row1, row2):
+    temp = matrix[row1]
+    matrix[row1] = matrix[row2]
+    matrix[row2] = temp
+END FUNCTION
+```
+**Explanation:**
+
+1. Augment the coefficient matrix $A$ with the constant matrix $b$.
+2. Perform Gaussian elimination to reduce the augmented matrix to row echelon form.
+3. Back-substitute to find the solution vector $X$.
+4. Return the solution vector $X$.
+
+
