@@ -554,4 +554,142 @@ END FUNCTION
 3. Back-substitute to find the solution vector $X$.
 4. Return the solution vector $X$.
 
+### Review Problems
+**Q1:** Fill in the missing parts of the pseudocode to yield a meaningful algebraic operation on of two matrices.
 
+**Pseudocode:**
+```python
+FUNCTION matrix_op1(A, B):
+    rows = number_of_rows(A)
+    cols = number_of_columns(A)
+    result = create_matrix(rows, cols, 0)
+    
+    FOR i FROM 0 TO rows-1:
+        FOR j FROM 0 TO cols-1:
+            result[i][j] = A[i][j] + ---
+    
+    RETURN result
+END FUNCTION
+```
+**Q2:** Write the pseudocode to get a useful derivable from a given matrix by filling in the missing part.
+
+**Pseudocode:**
+```python
+FUNCTION matrix_op2(A):
+    rows = number_of_rows(A)
+    cols = number_of_columns(A)
+    result = create_matrix(cols, rows, 0)
+    
+    FOR i FROM 0 TO rows-1:
+        FOR j FROM 0 TO cols-1:
+            result[j][i] = A[i][--]
+    
+    RETURN result
+END FUNCTION
+```
+## Transition from Pseudocode to Python Programming
+In this course, our initial approach to understanding and solving linear algebra problems has been through pseudocode. Pseudocode allows us to focus on the logical steps and algorithms without getting bogged down by the syntax of a specific programming language. This method helps us build a strong foundation in the computational aspects of linear algebra.
+
+However, to fully leverage the power of computational tools and prepare for real-world applications, it is essential to implement these algorithms in a practical programming language. Python is a highly versatile and widely-used language in the fields of data science, artificial intelligence, and engineering. By transitioning from pseudocode to Python, we align with the following course objectives:
+
+1. **Practical Implementation:** Python provides numerous libraries and tools, such as NumPy and SciPy, which are specifically designed for numerical computations and linear algebra. Implementing our algorithms in Python allows us to perform complex calculations efficiently and accurately.
+
+2. **Hands-On Experience:** Moving to Python programming gives students hands-on experience in coding, debugging, and optimizing algorithms. This practical experience is crucial for developing the skills required in modern computational tasks.
+
+3. **Industry Relevance:** Python is extensively used in industry for data analysis, machine learning, and scientific research. Familiarity with Python and its libraries ensures that students are well-prepared for internships, research projects, and future careers in these fields.
+
+4. **Integration with Other Tools:** Python’s compatibility with various tools and platforms allows for seamless integration into larger projects and workflows. This integration is vital for tackling real-world problems that often require multi-disciplinary approaches.
+
+5. **Enhanced Learning:** Implementing algorithms in Python helps reinforce theoretical concepts by providing immediate feedback through code execution and results visualization. This iterative learning process deepens understanding and retention of the material.
+
+By transitioning to Python programming, we not only achieve our course objectives but also equip students with valuable skills that are directly applicable to their academic and professional pursuits.
+
+## Python Fundamentals
+### Python Programming Overview
+Python is a high-level, interpreted programming language that was created by Guido van Rossum and first released in 1991. Its design philosophy emphasizes code readability and simplicity, making it an excellent choice for both beginners and experienced developers. Over the years, Python has undergone significant development and improvement, with major releases adding new features and optimizations. The language’s versatility and ease of use have made it popular in various domains, including web development, data science, artificial intelligence, scientific computing, automation, and more. Python’s extensive standard library and active community contribute to its widespread adoption, making it one of the most popular programming languages in the world today.
+
+### Variables
+In Python, variables are used to store data that can be used and manipulated throughout a program. Variables do not need explicit declaration to reserve memory space. The declaration happens automatically when a value is assigned to a variable.
+
+**Basic Input/Output Functions**
+
+Python provides built-in functions for basic input and output operations. The `print()` function is used to display output, while the `input()` function is used to take input from the user.
+
+Output with *`print()`* function
+
+> Example 1
+
+```python
+# Printing text
+print("Hello, World!")
+
+# Printing multiple values
+x = 5
+y = 10
+print("The value of x is:", x, "and the value of y is:", y)
+```
+> Example 2
+
+```python
+# Assigning values to variables
+a = 10
+b = 20.5
+name = "Alice"
+
+# Printing the values
+print("Values Stored in the Variables:")
+print(a)
+print(b)
+print(name)
+```
+Input with *`input()`* Function:
+
+```python
+# Taking input from the user
+name = input("Enter usr name: ")
+print("Hello, " + name + "!")
+
+# Taking numerical input
+age = int(input("Enter usr age: "))
+print("us are", age, "years old.")
+```
+> [!Note]
+> The `print()` function in Python, defined in the built-in `__builtin__` module, is used to display output on the screen, providing a simple way to output text and variable values to the console.
+
+
+**Combining Variables and Input/Output**
+
+We can combine variables and input/output functions to create interactive programs.
+
+> Example
+
+```python
+# Program to calculate the sum of two numbers
+num1 = float(input("Enter first number: "))
+num2 = float(input("Enter second number: "))
+
+# Calculate sum
+sum = num1 + num2
+
+# Display the result
+print("The sum of", num1, "and", num2, "is", sum)
+```
+## Python Programming Style
+###### Indentation
+
+Python uses indentation to define the blocks of code. Proper indentation is crucial as it affects the program’s flow. Use 4 spaces per indentation level.
+
+```python
+if a > b:
+    print("a is greater than b")
+else:
+    print("b is greater than or equal to a")
+```
+
+###### Comments
+Use comments to explain user code. Comments begin with the `#` symbol and extend to the end of the line. Write comments that are clear and concise. See the example:
+
+```python
+# This is a comment
+a = 10  # This is an inline comment
+```
