@@ -711,3 +711,49 @@ def calculate_sum(x, y):
 result = calculate_sum(5, 3)
 print(result)
 ```
+## Basic Datatypes in Python
+In Python, a datatype is a classification that specifies which type of value a variable can hold. Understanding datatypes is essential as it helps in performing appropriate operations on variables. Python supports various built-in datatypes, which can be categorized into several groups.
+
+### Numeric Types
+Numeric types represent data that consists of numbers. Python has three distinct numeric types:
+
+1. **Integers** (`int`):
+     - Whole numbers, positive or negative, without decimals.
+     - Example: `a = 10`, `b = -5`.
+2. **Floating Point Numbers** (`float`):
+     - Numbers that contain a decimal point.
+     - Example: `pi = 3.14`, `temperature = -7.5`.
+3. **Complex Numbers** (`complex`):
+     - Numbers with a real and an imaginary part.
+     - Example: `z = 3 + 4j`.
+```python
+# Examples of numeric types
+a = 10         # Integer
+pi = 3.14      # Float
+z = 3 + 4j     # Complex
+```
+### Sequence Types
+Sequence types are used to store multiple items in a single variable. Python has several sequence types, including:
+
+###### String Type
+Strings in Python are sequences of characters enclosed in quotes. They are used to handle and manipulate textual data.
+
+#### Characteristics of Strings
+
+- *Ordered*: Characters in a string have a defined order.
+- *Immutable*: Strings cannot be modified after they are created.
+- *Heterogeneous*: Strings can include any combination of letters, numbers, and symbols.
+    
+#### Creating Strings
+
+Strings can be created using single quotes, double quotes, or triple quotes for multiline strings.
+
+> Example:
+
+```python
+# Creating strings with different types of quotes
+single_quoted = 'Hello, World!'
+double_quoted = "Hello, World!"
+multiline_string = """This is a
+multiline string"""
+```
