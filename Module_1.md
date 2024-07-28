@@ -757,3 +757,218 @@ double_quoted = "Hello, World!"
 multiline_string = """This is a
 multiline string"""
 ```
+**Accessing String Characters**
+
+Characters in a string are accessed using their index, with the first character having an index of 0. Negative indexing can be used to access characters from the end.
+
+> Example
+
+```python
+# Accessing characters in a string
+first_char = single_quoted[0]  # Output: 'H'
+last_char = single_quoted[-1]  # Output: '!'
+```
+
+**Common String Methods**
+
+Python provides various methods for string manipulation:
+
+1. `upper()`: Converts all characters to uppercase.
+2. `lower()`: Converts all characters to lowercase.
+3. `strip()`: Removes leading and trailing whitespace.
+4. `replace(old, new)`: Replaces occurrences of a substring with another substring.
+5. `split(separator)`: Splits the string into a list based on a separator.
+
+> Example
+
+```python
+# Using string methods
+text = "   hello, world!   "
+uppercase_text = text.upper()       # Result: "   HELLO, WORLD!   "
+stripped_text = text.strip()        # Result: "hello, world!"
+replaced_text = text.replace("world", "Python")  # Result: "   hello, Python!   "
+words = text.split(",")             # Result: ['hello', ' world!   ']
+```
+
+###### List Type
+Lists are one of the most versatile and commonly used sequence types in Python. They allow for the storage and manipulation of ordered collections of items.
+
+> **Characteristics of Lists**
+
+- *Ordered*: The items in a list have a defined order, which will not change unless explicitly modified.
+- *Mutable*: The content of a list can be changed after its creation (i.e., items can be added, removed, or modified).
+- *Dynamic*: Lists can grow or shrink in size as items are added or removed.
+- *Heterogeneous*: Items in a list can be of different data types (e.g., integers, strings, floats).
+
+**Creating Lists**
+
+Lists are created by placing comma-separated values inside square brackets.
+
+> Example
+
+
+```pyhon
+# Creating a list of fruits
+fruits = ["apple", "banana", "cherry"]
+
+# Creating a mixed list
+mixed_list = [1, "Hello", 3.14]
+```
+
+**Accessing List Items**
+
+List items are accessed using their index, with the first item having an index of 0.
+
+> Example
+
+```python
+
+# Accessing the first item
+first_fruit = fruits[0]  # Output: "apple"
+
+# Accessing the last item
+last_fruit = fruits[-1]  # Output: "cherry"
+```
+**Modifying Lists**
+
+Lists can be modified by changing the value of specific items, adding new items, or removing existing items.
+
+> Example
+
+```python
+# Changing the value of an item
+fruits[1] = "blueberry"  # fruits is now ["apple", "blueberry", "cherry"]
+
+# Adding a new item
+fruits.append("orange")  # fruits is now ["apple", "blueberry", "cherry", "orange"]
+
+# Removing an item
+fruits.remove("blueberry")  # fruits is now ["apple", "cherry", "orange"]
+```
+
+**List Methods**
+
+`Python` provides several built-in methods to work with lists:
+
+1. `append(item)`: Adds an item to the end of the list.
+2. `insert(index, item)`: Inserts an item at a specified index.
+3. `remove(item)`: Removes the first occurrence of an item.
+4. `pop(index)`: Removes and returns the item at the specified index.
+5. `sort()`: Sorts the list in ascending order.
+6. `reverse()`: Reverses the order of the list.
+
+> Example
+
+```python
+# Using list methods
+numbers = [5, 2, 9, 1]
+
+numbers.append(4)     # numbers is now [5, 2, 9, 1, 4]
+numbers.sort()        # numbers is now [1, 2, 4, 5, 9]
+numbers.reverse()     # numbers is now [9, 5, 4, 2, 1]
+first_number = numbers.pop(0)  # first_number is 9, numbers is now [5, 4, 2, 1]
+```
+###### Tuple Type
+
+Tuples are a built-in sequence type in Python that is used to store an ordered collection of items. Unlike lists, tuples are immutable, which means their contents cannot be changed after creation.
+
+**Characteristics of Tuples**
+
+- `Ordered`: Tuples maintain the order of items, which is consistent throughout their lifetime.
+- `Immutable`: Once a tuple is created, its contents cannot be modified. This includes adding, removing, or changing items.
+- `Fixed Size`: The size of a tuple is fixed; it cannot grow or shrink after creation.
+- `Heterogeneous`: Tuples can contain items of different data types, such as integers, strings, and floats.
+
+**Creating Tuples**
+
+Tuples are created by placing comma-separated values inside parentheses. Single-element tuples require a trailing comma.
+
+> Example
+
+```python
+# Creating a tuple with multiple items
+coordinates = (10, 20, 30)
+
+# Creating a single-element tuple
+single_element_tuple = (5,)
+
+# Creating a tuple with mixed data types
+mixed_tuple = (1, "Hello", 3.14)
+```
+
+**Accessing Tuple Items**
+
+Tuple items are accessed using their index, with the first item having an index of 0. Negative indexing can be used to access items from the end.
+
+> Example
+
+```python
+# Accessing the first item
+x = coordinates[0]  # Output: 10
+
+# Accessing the last item
+z = coordinates[-1]  # Output: 30
+```
+
+**Modifying Tuples**
+
+Since tuples are immutable, their contents cannot be modified. However, us can create new tuples by combining or slicing existing ones.
+
+> Example
+
+```python
+# Combining tuples
+new_coordinates = coordinates + (40, 50)  # Result: (10, 20, 30, 40, 50)
+
+# Slicing tuples
+sub_tuple = coordinates[1:3]  # Result: (20, 30)
+```
+
+**Tuple Methods**
+
+Tuples have a limited set of built-in methods compared to lists:
+
+1. `count(item)`: Returns the number of occurrences of the specified item.
+2. `index(item)`: Returns the index of the first occurrence of the specified item.
+
+> Example
+
+```python
+# Using tuple methods
+numbers = (1, 2, 3, 1, 2, 1)
+
+# Counting occurrences of an item
+count_1 = numbers.count(1)  # Result: 3
+
+# Finding the index of an item
+index_2 = numbers.index(2)  # Result: 1
+```
+
+#### Mapping Types
+
+Mapping types in Python are used to store data in key-value pairs. Unlike sequences, mappings do not maintain an order and are designed for quick lookups of data.
+
+##### Dictionary (`dict`)
+The primary mapping type in Python is the `dict`. Dictionaries store data as key-value pairs, where each key must be unique, and keys are used to access their corresponding values.
+
+**Characteristics of Dictionaries**
+
+- *Unordered*: The order of items is not guaranteed and may vary.
+- *Mutable*: us can add, remove, and change items after creation.
+- *Keys*: Must be unique and immutable (e.g., strings, numbers, tuples).
+- *Values*: Can be of any data type and can be duplicated.
+
+**Creating Dictionaries**
+
+Dictionaries are created using curly braces `{}` with key-value pairs separated by colons `:`.
+
+> Example
+
+```python
+# Creating a dictionary
+student = {
+    "name": "Alice",
+    "age": 21,
+    "major": "Computer Science"
+}
+```
