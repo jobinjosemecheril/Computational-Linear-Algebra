@@ -972,3 +972,223 @@ student = {
     "major": "Computer Science"
 }
 ```
+
+**Accessing and Modifying Dictionary Items**
+
+Items in a dictionary are accessed using their keys. us can also modify, add, or remove items.
+
+> Example
+
+```python
+# Accessing a value
+name = student["name"]  # Output: "Alice"
+
+# Modifying a value
+student["age"] = 22  # Updates the age to 22
+
+# Adding a new key-value pair
+student["graduation_year"] = 2024
+
+# Removing a key-value pair
+del student["major"]
+```
+
+**Dictionary Methods**
+
+Python provides several built-in methods to work with dictionaries:
+
+1. `keys()`: Returns a view object of all keys.
+2. `values()`: Returns a view object of all values.
+3. `items()`: Returns a view object of all key-value pairs.
+4. `get(key, default)`: Returns the value for the specified key, or a default value if the key is not found.
+5. `pop(key, default)`: Removes and returns the value for the specified key, or a default value if the key is not found.
+
+> Example
+
+```python
+# Using dictionary methods
+keys = student.keys()        # Result: dict_keys(['name', 'age', 'graduation_year'])
+values = student.values()    # Result: dict_values(['Alice', 22, 2024])
+items = student.items()      # Result: dict_items([('name', 'Alice'), ('age', 22), ('graduation_year', 2024)])
+name = student.get("name")  # Result: "Alice"
+age = student.pop("age")    # Result: 22
+```
+
+#### Set Types
+
+Sets are a built-in data type in Python used to store unique, unordered collections of items. They are particularly useful for operations involving membership tests, set operations, and removing duplicates.
+
+**Characteristics of Sets**
+
+- *Unordered* : The items in a set do not have a specific order and may change.
+- *Mutable* : us can add or remove items from a set after its creation.
+- *Unique* : Sets do not allow duplicate items; all items must be unique.
+- *Unindexed* : Sets do not support indexing or slicing.
+
+**Creating Sets**
+
+Sets are created using curly braces `{}` with comma-separated values, or using the `set()` function.
+
+> Example
+
+```python
+# Creating a set using curly braces
+fruits = {"apple", "banana", "cherry"}
+
+# Creating a set using the set() function
+numbers = set([1, 2, 3, 4, 5])
+```
+
+**Accessing and Modifying Set Items**
+
+While us cannot access individual items by index, us can check for membership and perform operations like adding or removing items.
+
+> Example
+
+```python
+# Checking membership
+has_apple = "apple" in fruits  # Output: True
+
+# Adding an item
+fruits.add("orange")
+
+# Removing an item
+fruits.remove("banana")  # Raises KeyError if item is not present
+```
+
+**Set Operations**
+
+Sets support various mathematical set operations, such as `union`, `intersection`, and `difference`.
+
+> Example
+
+```python
+# Union of two sets
+set1 = {1, 2, 3}
+set2 = {3, 4, 5}
+union = set1 | set2  # Result: {1, 2, 3, 4, 5}
+
+# Intersection of two sets
+intersection = set1 & set2  # Result: {3}
+
+# Difference between two sets
+difference = set1 - set2  # Result: {1, 2}
+
+# Symmetric difference (items in either set, but not in both)
+symmetric_difference = set1 ^ set2  # Result: {1, 2, 4, 5}
+```
+
+**Set Methods**
+
+Python provides several built-in methods for set operations:
+
+1. `add(item)`: Adds an item to the set.
+2. `remove(item)`: Removes an item from the set; raises KeyError if item is not present.
+3. `discard(item)`: Removes an item from the set if present; does not raise an error if item is not found.
+4. `pop()`: Removes and returns an arbitrary item from the set.
+5. `clear()`: Removes all items from the set.
+
+
+> Example
+
+```python
+# Using set methods
+set1 = {1, 2, 3}
+
+set1.add(4)        # set1 is now {1, 2, 3, 4}
+set1.remove(2)     # set1 is now {1, 3, 4}
+set1.discard(5)    # No error, set1 remains {1, 3, 4}
+item = set1.pop()  # Removes and returns an arbitrary item, e.g., 1
+set1.clear()      # set1 is now an empty set {}
+```
+
+#### Frozen Sets
+
+Frozen sets are a built-in data type in Python that are similar to sets but are immutable. Once created, a frozen set cannot be modified, making it suitable for use as a key in dictionaries or as elements of other sets.
+
+**Characteristics of Frozen Sets**
+
+- *Unordered* : The items in a frozen set do not have a specific order and may change.
+- *Immutable* : Unlike regular sets, frozen sets cannot be altered after creation. No items can be added or removed.
+- *Unique* : Like sets, frozen sets do not allow duplicate items; all items must be unique.
+- *Unindexed* : Frozen sets do not support indexing or slicing.
+
+**Creating Frozen Sets**
+
+Frozen sets are created using the `frozenset()` function, which takes an iterable as an argument.
+
+> Example
+
+```python
+# Creating a frozen set
+numbers = frozenset([1, 2, 3, 4, 5])
+
+# Creating a frozen set from a set
+fruits = frozenset({"apple", "banana", "cherry"})
+```
+
+**Accessing and Modifying Frozen Set Items**
+
+Frozen sets do not support modification operations such as adding or removing items. However, us can perform membership tests and other set operations.
+
+> Example
+
+```python
+# Checking membership
+has_apple = "apple" in fruits  # Output: True
+
+# Since frozenset is immutable, us cannot use add() or remove() methods
+```
+
+**Set Operations with Frozen Sets**
+
+Frozen sets support various mathematical set operations similar to regular sets, such as union, intersection, and difference. These operations return new frozen sets and do not modify the original ones.
+
+> Example
+
+```python
+# Union of two frozen sets
+set1 = frozenset([1, 2, 3])
+set2 = frozenset([3, 4, 5])
+union = set1 | set2  # Result: frozenset({1, 2, 3, 4, 5})
+
+# Intersection of two frozen sets
+intersection = set1 & set2  # Result: frozenset({3})
+
+# Difference between two frozen sets
+difference = set1 - set2  # Result: frozenset({1, 2})
+
+# Symmetric difference (items in either set, but not in both)
+symmetric_difference = set1 ^ set2  # Result: frozenset({1, 2, 4, 5})
+```
+
+**Frozen Set Methods**
+
+Frozen sets have a subset of the methods available to regular sets. The available methods include:
+
+1. `copy()` : Returns a shallow copy of the frozen set.
+2. `difference(other)` : Returns a new frozen set with elements in the original frozen set but not in other.
+3. `intersection(other)` : Returns a new frozen set with elements common to both frozen sets.
+4. `union(other)` : Returns a new frozen set with elements from both frozen sets.
+5. `symmetric_difference(other)` : Returns a new frozen set with elements in either frozen set but not in both.
+
+> Example
+
+```python
+# Using frozen set methods
+set1 = frozenset([1, 2, 3])
+set2 = frozenset([3, 4, 5])
+
+# Getting the difference
+difference = set1.difference(set2)  # Result: frozenset({1, 2})
+
+# Getting the intersection
+intersection = set1.intersection(set2)  # Result: frozenset({3})
+
+# Getting the union
+union = set1.union(set2)  # Result: frozenset({1, 2, 3, 4, 5})
+
+# Getting the symmetric difference
+symmetric_difference = set1.symmetric_difference(set2)  # Result: frozenset({1, 2, 4, 5})
+```
+
