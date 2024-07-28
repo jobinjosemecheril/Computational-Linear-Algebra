@@ -1766,4 +1766,151 @@ for row in sharpened_image:
     print(row)
 ```
 
+##### Matrix Multiplication in Image Filtering (Convolution)
 
+Matrix multiplication, specifically convolution in the context of image processing, is a fundamental operation used for various tasks such as smoothing, sharpening, edge detection, and more. Convolution involves applying a small matrix, known as a kernel or filter, to an image matrix. This process modifies the pixel values of the image based on the values in the kernel, effectively filtering the image.
+
+**Concept** In grayscale images, each pixel value represents the intensity of light at that point. Convolution applies a kernel matrix over the image matrix to compute a weighted sum of neighborhood pixels. This weighted sum determines the new value of each pixel in the resulting filtered image.
+
+> Example
+
+Consider a grayscale image represented as a matrix:
+
+```python
+original_image= [[100, 150, 200, 250],
+ [150, 200, 250, 300],
+ [200, 250, 300, 350],
+ [250, 300, 350, 400]]
+```
+
+To perform smoothing (averaging) using a simple kernel:
+
+```python
+[[1/9, 1/9, 1/9],
+ [1/9, 1/9, 1/9],
+ [1/9, 1/9, 1/9]]
+```
+
+The kernel is applied over the image using convolution:
+
+```python
+smoothed_image[i][j] = sum(original_image[ii][jj] * kernel[k][l] for all (ii, jj) in neighborhood around (i, j))
+```
+
+**Python Implementation**
+
+Here’s a simplified Python example demonstrating convolution for image smoothing without external libraries:
+
+```python
+# Original image matrix (grayscale values)
+original_image = [
+    [100, 150, 200, 250],
+    [150, 200, 250, 300],
+    [200, 250, 300, 350],
+    [250, 300, 350, 400]
+]
+
+# Define a simple kernel/filter for smoothing (averaging)
+kernel = [
+    [1/9, 1/9, 1/9],
+    [1/9, 1/9, 1/9],
+    [1/9, 1/9, 1/9]
+]
+
+# Function for applying convolution (image filtering)
+def apply_convolution(image, kernel):
+    height = len(image)
+    width = len(image[0])
+    ksize = len(kernel)
+    kcenter = ksize // 2  # Center of the kernel
+
+    # Initialize result image
+    filtered_image = [[0]*width for _ in range(height)]
+
+    # Perform convolution
+    for i in range(height):
+        for j in range(width):
+            sum = 0.0
+            for k in range(ksize):
+                for l in range(ksize):
+                    ii = i + k - kcenter
+                    jj = j + l - kcenter
+                    if ii >= 0 and ii < height and jj >= 0 and jj < width:
+                        sum += image[ii][jj] * kernel[k][l]
+            filtered_image[i][j] = int(sum)
+    
+    return filtered_image
+
+# Apply convolution to simulate smoothed image (averaging filter)
+smoothed_image = apply_convolution(original_image, kernel)
+
+# Print the smoothed image
+print("Smoothed Image:")
+for row in smoothed_image:
+    print(row)
+```
+
+##### Determinant: Image Transformation
+
+**Concept** The determinant of a transformation matrix helps understand how transformations like scaling affect an image. A transformation matrix determines how an image is scaled, rotated, or sheared.
+
+> Example
+
+Here, we compute the determinant of a scaling matrix to understand how the scaling affects the image area.
+
+```python
+def calculate_determinant(matrix):
+    a, b = matrix[0]
+    c, d = matrix[1]
+    return a * d - b * c
+
+# Example transformation matrix (scaling)
+transformation_matrix = [[2, 0], [0, 2]]
+determinant = calculate_determinant(transformation_matrix)
+print(f"Determinant of the transformation matrix: {determinant}")
+```
+
+This value indicates how the transformation scales the image area.
+
+##### Rank: Image Rank and Data Compression
+
+**Concept** The rank of a matrix indicates the number of linearly independent rows or columns. In image compression, matrix rank helps approximate an image with fewer data.
+
+> Example
+
+Here, we compute the rank of a matrix representing an image. A lower rank might indicate that the image can be approximated with fewer data.
+
+```python
+def matrix_rank(matrix):
+    def is_zero_row(row):
+        return all(value == 0 for value in row)
+
+    def row_echelon_form(matrix):
+        A = [row[:] for row in matrix]
+        m = len(A)
+        n = len(A[0])
+        rank = 0
+        for i in range(min(m, n)):
+            if A[i][i] != 0:
+                for j in range(i + 1, m):
+                    factor = A[j][i] / A[i][i]
+                    for k in range(i, n):
+                        A[j][k] -= factor * A[i][k]
+                rank += 1
+        return rank
+
+    return row_echelon_form(matrix)
+
+# Example matrix (image)
+image_matrix = [[1, 2], [3, 4]]
+rank = matrix_rank(image_matrix)
+print(f"Rank of the image matrix: {rank}")
+```
+
+## Conclusion
+
+In this chapter, we transitioned from understanding fundamental matrix operations to applying them in practical scenarios, specifically in the realm of image processing. We began by covering essential matrix operations such as addition, subtraction, multiplication, and determinant calculations, providing both pseudocode and detailed explanations. This foundational knowledge was then translated into Python code, demonstrating how to perform these operations computationally.
+
+We further explored the application of these matrix operations to real-world image processing tasks. By applying techniques such as image blending, sharpening, filtering, and transformation, we illustrated how theoretical concepts can be used to manipulate and enhance digital images effectively. These practical examples highlighted the significance of matrix operations in solving complex image processing challenges.
+
+By integrating theoretical understanding with practical implementation, this chapter reinforced how matrix operations form the backbone of many image processing techniques. This blend of theory and practice equips you with essential skills for tackling advanced problems and developing innovative solutions in the field of image processing and beyond.
