@@ -1530,3 +1530,96 @@ print(bird.fly())      # Output: Flies in the sky
 print(penguin.fly())  # Output: Cannot fly, swims instead
 ```
 
+## Working with Files in Python
+
+File handling is an essential part of programming that allows us to work with data stored in files. Python provides built-in functions and methods to create, read, write, and manage files efficiently. This section will cover basic file operations, including opening, reading, writing, and closing files.
+
+**Opening a File**
+
+In Python, we use the `open()` function to open a file. This function returns a file object, which provides methods and attributes to interact with the file. The `open()` function requires at least one argument: the path to the file. we can also specify the mode in which the file should be opened.
+
+> Syntax
+
+```python
+file_object = open(file_path, mode)
+```
+
+Where,
+
+- `file_path` : Path to the file (can be a relative or absolute path).
+- `mode` : Specifies the file access mode (e.g., ‘r’ for reading, ‘w’ for writing, ‘a’ for appending).
+
+> Example
+
+```python
+# Opening a file in read mode
+file = open('example.txt', 'r')
+```
+
+**Reading from a File**
+
+Once a file is opened, we can read its contents using various methods. Common methods include `read()`, `readline()`, and `readlines()`.
+
+- `read()` : Reads the entire file content.
+- `readline()` : Reads a single line from the file.
+- `readlines()` : Reads all the lines into a list.
+
+> Example
+
+```python
+# Reading the entire file
+file_content = file.read()
+print(file_content)
+
+# Reading a single line
+file.seek(0)  # Move cursor to the start of the file
+line = file.readline()
+print(line)
+
+# Reading all lines
+file.seek(0)
+lines = file.readlines()
+print(lines)
+```
+
+**Writing to a File**
+
+To write data to a file, we need to open the file in `write` (‘w’) or `append` (‘a’) mode. When opened in `write` mode, the file is truncated (i.e., existing content is deleted). When opened in `append` mode, new data is added to the end of the file.
+
+> Example
+
+```python
+# Opening a file in write mode
+file = open('example.txt', 'w')
+
+# Writing data to the file
+file.write("Hello, World!\n")
+file.write("Python file handling example.")
+
+# Closing the file
+file.close()
+```
+
+**Closing a File**
+
+It is important to close a file after performing operations to ensure that all changes are saved and resources are released. We can close a file using the `close()` method of the file object.
+
+> Example
+
+```python
+f_1 = open('example.txt', 'w') # open the file example.txt to f_1
+f_1.close() # close the file with handler 'f_1'
+```
+
+**Using Context Managers**
+
+Context managers provide a convenient way to handle file operations, automatically managing file opening and closing. We can use the `with` statement to ensure that a file is properly closed after its block of code is executed.
+
+> Example
+
+```python
+# Using context manager to open and write to a file
+with open('example.txt', 'w') as file:
+    file.write("This is written using a context manager.")
+```
+
