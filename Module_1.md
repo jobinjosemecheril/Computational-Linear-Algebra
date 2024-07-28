@@ -1408,3 +1408,125 @@ result_product = my_library.multiply(5, 3)
 print(f"Sum: {result_sum}")
 print(f"Product: {result_product}")
 ```
+
+## Object-Oriented Programming (OOP) in Python
+
+Object-Oriented Programming (OOP) is a programming paradigm that uses “objects” to design and implement software. It emphasizes the organization of code into classes and objects, allowing for the encapsulation of data and functionality. OOP promotes code reusability, scalability, and maintainability through key principles such as encapsulation, inheritance, and polymorphism.
+
+#### Key Concepts of OOP
+
+1. **Classes and Objects**
+
+- **Class**: A class is a blueprint for creating objects. It defines a set of attributes and methods that the created objects will have. A class can be thought of as a template or prototype for objects.
+
+- **Object**: An object is an instance of a class. It is a specific realization of the class with actual values for its attributes.
+
+> Example
+
+```python
+# Defining a class
+class Dog:
+    def __init__(self, name, age):
+        self.name = name  # Attribute
+        self.age = age    # Attribute
+    
+    def bark(self):
+        return "Woof!"   # Method
+
+# Creating an object of the class
+my_dog = Dog(name="Buddy", age=3)
+
+# Accessing attributes and methods
+print(my_dog.name)  # Output: Buddy
+print(my_dog.age)   # Output: 3
+print(my_dog.bark())  # Output: Woof!
+```
+2. **Encapsulation**
+   
+Encapsulation is the concept of bundling data (attributes) and methods (functions) that operate on the data into a single unit, or class. It restricts direct access to some of the object’s components and can help protect the internal state of the object from unintended modifications.
+
+> Example: Controll the access to member variables using encapsulation.
+
+```python
+class Account:
+    def __init__(self, balance):
+        self.__balance = balance  # Private attribute
+    
+    def deposit(self, amount):
+        if amount > 0:
+            self.__balance += amount
+    
+    def get_balance(self):
+        return self.__balance
+
+# Creating an object of the class
+my_account = Account(balance=1000)
+my_account.deposit(500)
+
+print(my_account.get_balance())  # Output: 1500
+# print(my_account.__balance)  # This will raise an AttributeError
+```
+
+3. **Inheritance**
+   
+Inheritance is a mechanism in which a new class (child or derived class) inherits attributes and methods from an existing class (parent or base class). It allows for code reuse and the creation of a hierarchy of classes.
+
+> Example: Demonstrating usage of attributes of base class in the derived classes.
+
+```python
+# Base class
+class Animal:
+    def __init__(self, name):
+        self.name = name
+    
+    def speak(self):
+        return "Some sound"
+
+# Derived class
+class Dog(Animal):
+    def __init__(self, name, breed):
+        super().__init__(name)  # Calling the constructor of the base class
+        self.breed = breed
+    
+    def speak(self):
+        return "Woof!"
+
+# Another derived class
+class Cat(Animal):
+    def __init__(self, name, color):
+        super().__init__(name)  # Calling the constructor of the base class
+        self.color = color
+    
+    def speak(self):
+        return "Meow!"
+
+# Creating objects of the derived classes
+dog = Dog(name="Buddy", breed="Golden Retriever")
+cat = Cat(name="Whiskers", color="Gray")
+
+print(f"{dog.name} is a {dog.breed} and says {dog.speak()}")  # Output: Buddy is a Golden Retriever and says Woof!
+print(f"{cat.name} is a {cat.color} cat and says {cat.speak()}")  # Output: Whiskers is a Gray cat and says Meow!
+```
+4. **Polymorphism**
+   
+Polymorphism allows objects of different classes to be treated as objects of a common superclass. It enables a single interface to be used for different data types. In Python, polymorphism is often achieved through method overriding, where a method in a derived class has the same name as a method in the base class but implements different functionality.
+
+> Example
+
+```python
+class Bird:
+    def fly(self):
+        return "Flies in the sky"
+
+class Penguin(Bird):
+    def fly(self):
+        return "Cannot fly, swims instead"
+
+# Creating objects of different classes
+bird = Bird()
+penguin = Penguin()
+
+print(bird.fly())      # Output: Flies in the sky
+print(penguin.fly())  # Output: Cannot fly, swims instead
+```
+
