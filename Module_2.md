@@ -484,3 +484,26 @@ print("\nScaled Covariance Matrix:")
 print(scaled_cov_matrix)
 ```
 
+#### Inner Product of Matrices
+
+The inner product of two matrices is a generalized extension of the dot product, where each matrix is treated as a vector in a high-dimensional space. For two matrices $A$ and $B$ of the same dimension $m\times n$, the inner product is defined as the sum of the element-wise products of the matrices.
+
+>[!NOTE]
+>## Definition (Inner product)
+
+For two matrices $A$ and $B$ of dimension $m\times n$, the inner product $\langle A, B \rangle$ is given by:
+
+$$\langle A, B \rangle = \sum_{i=1}^{m} \sum_{j=1}^{n} A_{ij} \cdot B_{ij}$$
+
+where $\cdot$ denotes element-wise multiplication.
+
+>[!NOTE]
+>## Properties
+
+1. Commutativity: $\langle A, B \rangle = \langle B, A \rangle$
+
+2. Linearity: $\langle A + C, B \rangle = \langle A, B \rangle + \langle C, B \rangle$
+
+3. Positive Definiteness: $\langle A, A \rangle \geq 0$
+with equality if and only if $A$ is a zero matrix.
+
