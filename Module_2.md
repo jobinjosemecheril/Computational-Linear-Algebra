@@ -641,3 +641,77 @@ A=np.array([1,2,3])
 B=np.array([4,5,6])
 display(A.dot(B.T))# dot() stands for dot product B.T represents the transpose of B
 ```
+
+**Practical Applications**
+
+*Application 1: Signal Processing*
+
+In signal processing, the inner product can be used to measure the similarity between two signals. Here the most popular measure of similarity is the `cosine` similarity. This measure is defined as:
+
+ $$\cos \theta=\dfrac{A\cdot B}{||A|| ||B||}$$
+
+Now consider two digital signals are given. It’s cosine similarity measure can be calculated with a simulated data as shown below.
+
+```python
+import numpy as np
+
+# Simulated large signals (1D array) using NumPy
+signal1 = np.sin(np.random.rand(1000))
+signal2 = np.cos(np.random.rand(1000))
+
+# Compute inner product
+inner_product_signal = np.dot(signal1, signal2)
+#cosine_sim=np.dot(signal1,signal2)/(np.linalg.norm(signal1)*np.linalg.norm(signal2))
+# Display result
+cosine_sim=inner_product_signal/(np.sqrt(np.dot(signal1,signal1))*np.sqrt(np.dot(signal2,signal2)))
+print("Inner Product (Using numpy):")
+print(inner_product_signal)
+print("Similarity of signals:")
+print(cosine_sim)
+```
+
+*Application 2: Machine Learning - Feature Similarity*
+
+In machine learning, the inner product is used to calculate the similarity between feature vectors.
+
+```python
+import numpy as np
+
+# Simulated feature vectors (2D array) using NumPy
+features1 = np.random.rand(100, 10)
+features2 = np.random.rand(100, 10)
+
+# Compute inner product for each feature vector
+inner_products = np.einsum('ij,ij->i', features1, features2) # use Einstien's sum
+
+# Display results
+print("Inner Products of Feature Vectors:")
+display(inner_products)
+```
+
+*Application 3: Covariance Matrix in Statistics*
+
+The inner product can be used to compute covariance matrices for statistical data analysis. If $X$ is a given distribution and $x=X-\bar{X}$. Then the covariance of $X$ can be calculated as $cov(X)=\dfrac{1}{n-1}(x\cdot x^T)$. The python code a simulated data is shown below.
+
+```python
+import sympy as sp
+import numpy as np
+
+# Simulated large dataset (2D array) using NumPy
+data = np.random.rand(100, 10)
+
+# Compute the mean of each column
+mean = np.mean(data, axis=0)
+
+# Center the data
+centered_data = data - mean
+
+# Compute the covariance matrix using matrix product operation
+cov_matrix = (centered_data.T @ centered_data) / (centered_data.shape[0] - 1)
+cov_matrix_sympy = sp.Matrix(cov_matrix)
+
+# Display results
+print("Covariance Matrix:")
+display(cov_matrix_sympy)
+```
+These examples demonstrate the use of inner product and dot product in various applications.
