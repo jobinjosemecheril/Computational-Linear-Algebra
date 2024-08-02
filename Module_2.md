@@ -507,3 +507,137 @@ where $\cdot$ denotes element-wise multiplication.
 3. Positive Definiteness: $\langle A, A \rangle \geq 0$
 with equality if and only if $A$ is a zero matrix.
 
+Some simple examples showing the mathematical process of calculating the inner product is given bellow.
+
+**Example 1: Basic Inner Product**
+
+Given matrices:
+
+$$A = \begin{pmatrix}
+1 & 2 \\
+3 & 4
+\end{pmatrix}, \quad
+B = \begin{pmatrix}
+5 & 6 \\
+7 & 8
+\end{pmatrix}$$
+
+The inner product $\langle A, B \rangle$ is:
+
+$$\langle A, B \rangle = 1 \cdot 5 + 2 \cdot 6 + 3 \cdot 7 + 4 \cdot 8 = 5 + 12 + 21 + 32 = 70$$
+
+**Example 2: Inner Product with Larger Matrices**
+
+Given matrices:
+
+$$A = \begin{pmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9
+\end{pmatrix}, \quad
+B = \begin{pmatrix}
+9 & 8 & 7 \\
+6 & 5 & 4 \\
+3 & 2 & 1
+\end{pmatrix}$$
+
+The inner product $\langle A, B \rangle$ is calculated as:
+
+$$\begin{align*}
+\langle A, B \rangle &= 1 \cdot 9 + 2 \cdot 8 + 3 \cdot 7 + 4 \cdot 6 + 5 \cdot 5 + 6 \cdot 4 + 7 \cdot 3 + 8 \cdot 2 + 9 \cdot 1\\
+&= 9 + 16 + 21 + 24 + 25 + 24 + 21 + 16 + 9\\
+&= 175
+\end{align*}$$
+
+Now let’s look into the computational part of inner product.
+
+*1.Compute Inner Product from Scratch (without Libraries)*
+Here’s how you can compute the inner product from the scratch:
+
+```python
+# Define matrices A and B
+A = [[1, 2, 3], [4, 5, 6]]
+B = [[7, 8, 9], [10, 11, 12]]
+
+# Function to compute inner product
+def inner_product(A, B):
+    # Get the number of rows and columns
+    num_rows = len(A)
+    num_cols = len(A[0])
+    
+    # Initialize the result
+    result = 0
+    
+    # Compute the inner product
+    for i in range(num_rows):
+        for j in range(num_cols):
+            result += A[i][j] * B[i][j]
+    
+    return result
+
+# Compute inner product
+inner_product_result = inner_product(A, B)
+
+# Display result
+print("Inner Product (From Scratch):")
+print(inner_product_result)
+```
+
+*2.Compute Inner Product Using NumPy*
+Here’s how to compute the inner product using `Numpy`:
+
+```python
+import numpy as np
+# Define matrices A and B
+A = np.array([[1, 2, 3], [4, 5, 6]])
+B = np.array([[7, 8, 9], [10, 11, 12]])
+# calculating innerproduct
+inner_product = (A*B).sum() # calculate element-wise product, then column sum
+
+print("Inner Product (Using numpy):")
+print(inner_product)
+```
+
+The same operation can be done using `SymPy` functions as follows.
+
+```python
+import sympy as sp
+import numpy as np  
+# Define matrices A and B
+A = sp.Matrix([[1, 2, 3], [4, 5, 6]])
+B = sp.Matrix([[7, 8, 9], [10, 11, 12]])
+
+# Compute element-wise product
+elementwise_product = A.multiply_elementwise(B)
+
+# Calculate sum of each column
+inner_product_sympy = np.sum(elementwise_product)
+
+# Display result
+print("Inner Product (Using SymPy):")
+print(inner_product_sympy)
+```
+
+A vector dot product (in Physics) can be calculated using `SymPy .dot()` function as shown below.
+
+Let  $`A=\begin{pmatrix}1&2&3\end{pmatrix}`$ and  $`B=\begin{pmatrix}4&5&6\end{pmatrix}`$, then the dot product,$`A\cdot B`$ is computed as:
+
+```python
+import sympy as sp
+A=sp.Matrix([1,2,3])
+B=sp.Matrix([4,5,6])
+display(A.dot(B)) # calculate fot product of A and B
+```
+
+>[!CAUTION]
+>In SymPy , `sp.Matrix([1,2,3])` create a column vector. But `np.array([1,2,3])` creates a row vector. So be careful while applying matrix/ dot product operations on these objects.
+
+
+The same dot product using `numpy` object can be done as follows:
+
+```python
+import numpy as np
+A=np.array([1,2,3])
+B=np.array([4,5,6])
+display(A.dot(B.T))# dot() stands for dot product B.T represents the transpose of B
+```
