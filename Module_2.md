@@ -47,3 +47,4 @@ plt.ylabel('Total Sales')
 plt.title('Combined Quarterly Sales Data for Regions A and B')
 plt.show()
 ```
+
