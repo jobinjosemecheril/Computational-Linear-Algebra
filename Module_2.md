@@ -832,3 +832,193 @@ outer_product_sympy = u * v.T
 print("Outer Product of Vectors (Using SymPy):")
 display(outer_product_sympy)
 ```
+**Outer Product of Matrices**
+
+The outer product of two matrices extends the concept from vectors to higher-dimensional tensors. For two matrices $A$ and $B$, the outer product results in a higher-dimensional tensor and is generally expressed as block matrices.
+
+>[!NOTE]
+>## Definition (Outer Product of Matrices)
+
+For two matrices $A$ of dimension $m\times p$ and $B$ of dimension $q\times n$, the outer product $A \otimes B$ results in a tensor of dimension $m \times q \times p \times n$. The entries of the tensor are given by:
+
+$$(A \otimes B)_{ijkl} = A_{ij} \cdot B_{kl}$$
+
+where $\cdot$ denotes the outer product operation.
+
+>[!NOTE]
+>## Properties
+
+1. Linearity: $(A + C) \otimes B = (A \otimes B) + (C \otimes B)$
+
+2. Distributivity: $A \otimes (B + D) = (A \otimes B) + (A \otimes D)$
+
+3. Associativity: $(A \otimes B) \otimes C = A \otimes (B \otimes C)$
+
+Here are some simple examples to demonstrate the mathematical procedure to find outer product of matrices.
+
+**Example 1: Basic Outer Product of Matrices**
+
+Given matrices:
+
+$$A = \begin{pmatrix}
+1 & 2 \\
+3 & 4
+\end{pmatrix}, \quad
+B = \begin{pmatrix}
+5 \\
+6
+\end{pmatrix}$$
+
+The outer product $A \otimes B$ is:
+
+$$A \otimes B = \begin{pmatrix}
+1 \cdot 5 & 1 \cdot 6 \\
+2 \cdot 5 & 2 \cdot 6 \\
+3 \cdot 5 & 3 \cdot 6 \\
+4 \cdot 5 & 4 \cdot 6
+\end{pmatrix} = \begin{pmatrix}
+5 & 6 \\
+10 & 12 \\
+15 & 18 \\
+20 & 24
+\end{pmatrix}$$
+
+**Example 2: Outer Product with Larger Matrices**
+
+Given matrices:
+
+$$A = \begin{pmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6
+\end{pmatrix}, \quad
+B = \begin{pmatrix}
+7 \\
+8
+\end{pmatrix}$$
+
+The outer product $A \otimes B$ is:
+
+$$A \otimes B = \begin{pmatrix}
+1 \cdot 7 & 1 \cdot 8 \\
+2 \cdot 7 & 2 \cdot 8 \\
+3 \cdot 7 & 3 \cdot 8 \\
+4 \cdot 7 & 4 \cdot 8 \\
+5 \cdot 7 & 5 \cdot 8 \\
+6 \cdot 7 & 6 \cdot 8
+\end{pmatrix} = \begin{pmatrix}
+7 & 8 \\
+14 & 16 \\
+21 & 24 \\
+28 & 32 \\
+35 & 40 \\
+42 & 48
+\end{pmatrix}$$
+
+**Example 3: Compute the outer product of the following vectors $\mathbf{u} = [0, 1, 2]$ and $\mathbf{v} = [2, 3, 4]$.**
+
+To find the outer product, we calculate each element $(i, j)$ as the product of the $(i)$-th element of $\mathbf{u}$ and the $(j)$-th element of $\mathbf{v}$. Mathematically:
+
+$$\mathbf{u} \otimes \mathbf{v} = \begin{bmatrix}
+0 \cdot 2 & 0 \cdot 3 & 0 \cdot 4 \\
+1 \cdot 2 & 1 \cdot 3 & 1 \cdot 4 \\
+2 \cdot 2 & 2 \cdot 3 & 2 \cdot 4
+\end{bmatrix}
+= \begin{bmatrix}
+0 & 0 & 0 \\
+2 & 3 & 4 \\
+4 & 6 & 8
+\end{bmatrix}$$
+
+**1. Compute Outer Product of Matrices from Scratch (without Libraries)**
+
+Here’s how you can compute the outer product manually:
+
+```python
+# Define matrices A and B
+A = [[1, 2], [3, 4]]
+B = [[5], [6]]
+
+# Function to compute outer product
+def outer_product_matrices(A, B):
+    m = len(A)
+    p = len(A[0])
+    q = len(B)
+    n = len(B[0])
+    result = [[0] * (n * p) for _ in range(m * q)]
+
+    for i in range(m):
+        for j in range(p):
+            for k in range(q):
+                for l in range(n):
+                    result[i*q + k][j*n + l] = A[i][j] * B[k][l]
+
+    return result
+
+# Compute outer product
+outer_product_result_matrices = outer_product_matrices(A, B)
+
+# Display result
+print("Outer Product of Matrices (From Scratch):")
+for row in outer_product_result_matrices:
+    print(row)
+```
+
+Here is the `Python` code to compute the outer product of these vectors using the `NumPy` function `.outer()`:
+
+```python
+import numpy as np
+
+# Define vectors
+u = np.array([[1,2],[3,4]])
+v = np.array([[5],[4]])
+
+# Compute outer product
+outer_product = np.outer(u, v)
+
+print("Outer Product of u and v:")
+display(outer_product)
+```
+
+**Example 3: Real-world Application in Recommendation Systems**
+
+In recommendation systems, the outer product can represent user-item interactions. A simple context is here. Let the user preferences of items is given as $u=[4, 3, 5]$ and the item scores is given by $v=[2, 5, 4]$. Now the recommendation score can be calculated as the outer product of these two vectors. Calculation of this score is shown below. The outer product $\mathbf{u} \otimes \mathbf{v}$ is calculated as follows:
+
+$$\mathbf{u} \otimes \mathbf{v} = \begin{bmatrix}
+4 \cdot 2 & 4 \cdot 5 & 4 \cdot 4 \\
+3 \cdot 2 & 3 \cdot 5 & 3 \cdot 4 \\
+5 \cdot 2 & 5 \cdot 5 & 5 \cdot 4
+\end{bmatrix}
+= \begin{bmatrix}
+8 & 20 & 16 \\
+6 & 15 & 12 \\
+10 & 25 & 20
+\end{bmatrix}$$
+
+The python code for this task is given below.
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Define the user and product ratings vectors
+user_ratings = np.array([4, 3, 5])
+product_ratings = np.array([2, 5, 4])
+
+# Compute the outer product
+predicted_ratings = np.outer(user_ratings, product_ratings)
+
+# Print the predicted ratings matrix
+print("Predicted Ratings Matrix:")
+display(predicted_ratings)
+
+# Plot the result
+plt.imshow(predicted_ratings, cmap='coolwarm', interpolation='nearest')
+plt.colorbar()
+plt.title('Predicted Ratings Matrix (Recommendation System)')
+plt.xlabel('Product Ratings')
+plt.ylabel('User Ratings')
+plt.xticks(ticks=np.arange(len(product_ratings)), labels=product_ratings)
+plt.yticks(ticks=np.arange(len(user_ratings)), labels=user_ratings)
+plt.show()
+```
+
