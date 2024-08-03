@@ -1022,3 +1022,93 @@ plt.yticks(ticks=np.arange(len(user_ratings)), labels=user_ratings)
 plt.show()
 ```
 
+>[!NOTE]
+>## Additional Properties & Definitions
+
+1. **Definition and Properties**
+
+Given two vectors:
+
+ - $\mathbf{u} \in \mathbb{R}^m$
+ - $\mathbf{v} \in \mathbb{R}^n$
+
+The outer product $\mathbf{u} \otimes \mathbf{v}$ results in an $m \times n$ matrix where each element $(i, j)$ of the matrix is calculated as:
+
+$$(\mathbf{u} \otimes \mathbf{v})_{ij} = u_i \cdot v_j$$
+
+2. **Non-Symmetry**
+
+The outer product is generally not symmetric. For vectors $\mathbf{u}$ and $\mathbf{v}$, the matrix $\mathbf{u} \otimes \mathbf{v}$ is not necessarily equal to $\mathbf{v} \otimes \mathbf{u}$:
+
+$$\mathbf{u} \otimes \mathbf{v} \neq \mathbf{v} \otimes \mathbf{u}$$
+
+3. **Rank of the Outer Product**
+
+The rank of the outer product matrix $\mathbf{u} \otimes \mathbf{v}$ is always 1, provided neither $\mathbf{u}$ nor $\mathbf{v}$ is a zero vector. This is because the matrix can be expressed as a single rank-1 matrix.
+
+4. **Distributive Property**
+
+The outer product is distributive over vector addition. For vectors $\mathbf{u}_1, \mathbf{u}_2 \in \mathbb{R}^m$ and $\mathbf{v} \in \mathbb{R}^n$:
+
+$$(\mathbf{u}_1 + \mathbf{u}_2) \otimes \mathbf{v} = (\mathbf{u}_1 \otimes \mathbf{v}) + (\mathbf{u}_2 \otimes \mathbf{v})$$
+
+5. **Associativity with Scalar Multiplication**
+
+The outer product is associative with scalar multiplication. For a scalar $\alpha$ and vectors $\mathbf{u} \in \mathbb{R}^m$ and $\mathbf{v} \in \mathbb{R}^n$:
+
+$$\alpha (\mathbf{u} \otimes \mathbf{v}) = (\alpha \mathbf{u}) \otimes \mathbf{v} = \mathbf{u} \otimes (\alpha \mathbf{v})$$
+
+6. **Matrix Trace**
+
+The trace of the outer product of two vectors is given by:
+
+$$\text{tr}(\mathbf{u} \otimes \mathbf{v}) = (\mathbf{u}^T \mathbf{v}) \cdot (\mathbf{v}^T \mathbf{u})$$
+
+Here, $\text{tr}$ denotes the trace of a matrix, which is the sum of its diagonal elements.
+
+7. **Matrix Norm**
+
+The Frobenius norm of the outer product matrix can be expressed in terms of the norms of the original vectors:
+
+$$\| \mathbf{u} \otimes \mathbf{v} \|_F = \| \mathbf{u} \|_2 \cdot \| \mathbf{v} \|_2$$
+
+where $\| \cdot \|_2$ denotes the Euclidean norm.
+
+**Example Calculation in** `Python`
+
+Here’s how to compute and visualize the outer product properties using `Python`:
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Define vectors
+u = np.array([1, 2, 3])
+v = np.array([4, 5])
+
+# Compute outer product
+outer_product = np.outer(u, v)
+
+# Display results
+print("Outer Product Matrix:")
+print(outer_product)
+
+# Compute and display rank
+rank = np.linalg.matrix_rank(outer_product)
+print(f"Rank of Outer Product Matrix: {rank}")
+
+# Compute Frobenius norm
+frobenius_norm = np.linalg.norm(outer_product, 'fro')
+print(f"Frobenius Norm: {frobenius_norm}")
+
+# Plot the result
+plt.imshow(outer_product, cmap='viridis', interpolation='nearest')
+plt.colorbar()
+plt.title('Outer Product Matrix')
+plt.xlabel('Vector v')
+plt.ylabel('Vector u')
+plt.xticks(ticks=np.arange(len(v)), labels=v)
+plt.yticks(ticks=np.arange(len(u)), labels=u)
+plt.show()
+```
+
