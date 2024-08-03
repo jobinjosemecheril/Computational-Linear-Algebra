@@ -715,3 +715,120 @@ print("Covariance Matrix:")
 display(cov_matrix_sympy)
 ```
 These examples demonstrate the use of inner product and dot product in various applications.
+
+#### Outer Product
+The outer product of two vectors results in a matrix, and it is a way to combine these vectors into a higher-dimensional representation.
+
+>[!NOTE]
+>## Definition (Outer Product)
+
+For two vectors $\mathbf{u}$ and $\mathbf{v}$ of dimensions $m$ and $n$ respectively, the outer product $\mathbf{u} \otimes \mathbf{v}$ is an $m\times n$ matrix defined as:
+
+$$(\mathbf{u} \otimes \mathbf{v})_{ij} = u_i \cdot v_j$$
+
+where $\cdot$ denotes the outer product operation. In matrix notation, for two column vectors $u,v$,
+
+$$u\otimes v=uv^T$$
+
+>[!NOTE]
+>## Properties
+
+1. Linearity: $(\mathbf{u} + \mathbf{w}) \otimes \mathbf{v} = (\mathbf{u} \otimes \mathbf{v}) + (\mathbf{w} \otimes \mathbf{v})$
+
+2. Distributivity: $\mathbf{u} \otimes (\mathbf{v} + \mathbf{w}) = (\mathbf{u} \otimes \mathbf{v}) + (\mathbf{u} \otimes \mathbf{w})$
+
+3. Associativity: $(\mathbf{u} \otimes \mathbf{v}) \otimes \mathbf{w} = \mathbf{u} \otimes (\mathbf{v} \otimes \mathbf{w})$
+
+Some simple examples of outer product is given below.
+
+**Example 1: Basic Outer Product**
+
+Given vectors:
+
+$$\mathbf{u} = \begin{pmatrix}
+1 \\
+2
+\end{pmatrix}, \quad
+\mathbf{v} = \begin{pmatrix}
+3 \\
+4 \\
+5\end{pmatrix}$$
+
+The outer product $\mathbf{u} \otimes \mathbf{v}$ is:
+
+$$\mathbf{u} \otimes \mathbf{v} = \begin{pmatrix}
+1 \cdot 3 & 1 \cdot 4 & 1 \cdot 5 \\
+2 \cdot 3 & 2 \cdot 4 & 2 \cdot 5
+\end{pmatrix} = \begin{pmatrix}
+3 & 4 & 5 \\
+6 & 8 & 10
+\end{pmatrix}$$
+
+**Example 2: Outer Product with Larger Vectors**
+
+Given vectors:
+
+$$\mathbf{u} = \begin{pmatrix}
+1 \\
+2 \\
+3
+\end{pmatrix}, \quad
+\mathbf{v} = \begin{pmatrix}
+4 \\
+5
+\end{pmatrix}$$
+
+The outer product $\mathbf{u} \otimes \mathbf{v}$ is:
+
+$$\mathbf{u} \otimes \mathbf{v} = \begin{pmatrix}
+1 \cdot 4 & 1 \cdot 5 \\
+2 \cdot 4 & 2 \cdot 5 \\
+3 \cdot 4 & 3 \cdot 5
+\end{pmatrix} = \begin{pmatrix}
+4 & 5 \\
+8 & 10 \\
+12 & 15
+\end{pmatrix}$$
+
+**1. Compute Outer Product of Vectors from Scratch (without Libraries)**
+
+Here’s how you can compute the outer product manually:
+
+```python
+# Define vectors u and v
+u = [1, 2]
+v = [3, 4, 5]
+
+# Function to compute outer product
+def outer_product(u, v):
+    # Initialize the result
+    result = [[a * b for b in v] for a in u]
+    return result
+
+# Compute outer product
+outer_product_result = outer_product(u, v)
+
+# Display result
+print("Outer Product of Vectors (From Scratch):")
+for row in outer_product_result:
+    print(row)
+```
+
+**2. Compute Outer Product of Vectors Using `SymPy`**
+
+Here’s how to compute the outer product using `SymPy`:
+
+```python
+import sympy as sp
+
+# Define vectors u and v
+u = sp.Matrix([1, 2])
+v = sp.Matrix([3, 4, 5])
+
+# Compute outer product using SymPy
+outer_product_sympy = u * v.T
+
+# Display result
+print("Outer Product of Vectors (Using SymPy):")
+display(outer_product_sympy)
+```
