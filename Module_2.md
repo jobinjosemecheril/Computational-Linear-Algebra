@@ -1246,4 +1246,71 @@ frobenius_norm_C = np.linalg.norm(C, 'fro')
 print(f"Frobenius Norm of C: {frobenius_norm_C:.2f}")
 ```
 
+**Frobenius norm of Kronecker product**
+
+Let us consider two matrices,
+
+$$A = \begin{bmatrix}
+1 & 2 \\
+3 & 4
+\end{bmatrix}$$
+
+and
+
+$$B = \begin{bmatrix}
+0 & 5 \\
+6 & 7
+\end{bmatrix}$$
+
+The Kronecker product $C = A \otimes B$ is:
+
+$$C = \begin{bmatrix}
+1 \cdot B & 2 \cdot B \\
+3 \cdot B & 4 \cdot B
+\end{bmatrix}
+= \begin{bmatrix}
+\begin{bmatrix}
+0 & 5 \\
+6 & 7
+\end{bmatrix} & \begin{bmatrix}
+0 \cdot 2 & 5 \cdot 2 \\
+6 \cdot 2 & 7 \cdot 2
+\end{bmatrix} \\
+\begin{bmatrix}
+0 \cdot 3 & 5 \cdot 3 \\
+6 \cdot 3 & 7 \cdot 3
+\end{bmatrix} & \begin{bmatrix}
+0 \cdot 4 & 5 \cdot 4 \\
+6 \cdot 4 & 7 \cdot 4
+\end{bmatrix}
+\end{bmatrix}$$
+
+This expands to:
+
+$$C = \begin{bmatrix}
+0 & 5 & 0 & 10 \\
+6 & 7 & 12 & 14 \\
+0 & 15 & 0 & 20 \\
+18 & 21 & 24 & 28
+\end{bmatrix}$$
+
+*Computing the Frobenius Norm*
+
+To compute the Frobenius norm of $C$:
+
+$$\|C\|_F = \sqrt{\sum_{i=1}^{4} \sum_{j=1}^{4} |c_{ij}|^2}$$
+
+$$\|C\|_F = \sqrt{0^2 + 5^2 + 0^2 + 10^2 + 6^2 + 7^2 + 12^2 + 14^2 + 0^2 + 15^2 + 0^2 + 20^2 + 18^2 + 21^2 + 24^2 + 28^2}$$
+
+$$\|C\|_F = \sqrt{0 + 25 + 0 + 100 + 36 + 49 + 144 + 196 + 0 + 225 + 0 + 400 + 324 + 441 + 576 + 784}$$
+
+$$\|C\|_F = \sqrt{2896}$$
+
+$$\|C\|_F \approx 53.87$$
+
+---
+
+1. A regularization techniques in Deep learning. This approach deactivate some selected neurons to control model over-fitting
+
+2. Remember that the covariance of $X$ is defined as $Cov(X)=\dfrac{\sum (X-\bar{X})^2}{n-1}$.
 
